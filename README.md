@@ -19,7 +19,7 @@ assets/img/     Original SVG illustrations, map, favicon
 assets/fonts/   Oswald, Source Sans 3, Yellowtail (woff2)
 ```
 
-All links are relative, so the site works at `username.github.io/repo-name/` too.
+All links are relative, except in `404.html`, which uses root paths (`/assets/...`) so the error page renders correctly at any URL depth on the custom domain.
 
 ## Publishing on GitHub Pages
 
