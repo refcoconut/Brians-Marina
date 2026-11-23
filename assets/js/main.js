@@ -52,7 +52,7 @@
     var seed = day;
     var pick = function (arr, n) { return arr[(seed * (n + 7)) % arr.length]; };
     var set = function (id, v) { var el = document.getElementById(id); if (el) el.textContent = v; };
-    wx.textContent = "Updated " + d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" }) + ", around 6 a.m. Brian time";
+    wx.textContent = "Updated " + d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" }) + ", around 6 AM Brian time";
     set("wx-wind", pick(["SE 8 kt", "E 10 kt", "ESE 6 kt", "Calm-ish", "SE 12 kt"], 1));
     set("wx-seas", pick(["1–2 ft", "Flat", "1 ft", "2 ft, then flat"], 2));
     set("wx-temp", pick(["78°F", "79°F", "80°F", "81°F"], 3));
@@ -104,7 +104,7 @@
       } catch (e) { return null; }
     }
     function fmt(min) {
-      var h = Math.floor(min / 60), m = min % 60, ap = h >= 12 ? "p.m." : "a.m.";
+      var h = Math.floor(min / 60), m = min % 60, ap = h >= 12 ? "PM" : "AM";
       return ((h + 11) % 12 + 1) + ":" + (m < 10 ? "0" : "") + m + " " + ap;
     }
     function update() {
@@ -115,14 +115,14 @@
       if (flag) {
         flag.textContent = open ? "Ramp open" : "Ramp closed";
         flag.classList.toggle("is-closed", !open);
-        flag.title = tip + (open ? ". Gate closes at 6:00 p.m." : ". Opens at 7:00 a.m. Unless Brian says otherwise.");
+        flag.title = tip + (open ? ". Gate closes at 6:00 PM." : ". Opens at 7:00 AM. Unless Brian says otherwise.");
       }
       if (gate) {
         if (open) {
           var left = CLOSE - now;
-          gate.textContent = left <= 60 ? "Open, closing in " + left + " min" : "Open now · closes 6:00";
+          gate.textContent = left <= 60 ? "Open, closing in " + left + " min" : "Open now · closes 6:00\u00a0PM";
         } else {
-          gate.textContent = "Closed · opens 7:00";
+          gate.textContent = "Closed · opens 7:00\u00a0AM";
         }
         gate.title = tip;
       }
